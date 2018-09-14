@@ -139,7 +139,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		Execute-Process -Path "$dirFiles\Realtek-High-Definition-Audio-Driver_88PPP_WIN_6.0.1.8403_A00.EXE" -Parameters '/silent' -WindowStyle 'Hidden'
+		Execute-Process -Path "$dirFiles\Realtek-High-Definition-Audio-Driver_88PPP_WIN_6.0.1.8403_A00.EXE" -Parameters '/s /i' -WindowStyle 'Hidden'
 
 		##*===============================================
 		##* POST-INSTALLATION
