@@ -139,7 +139,8 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		Execute-Process -Path "$dirFiles\Realtek-High-Definition-Audio-Driver_88PPP_WIN_6.0.1.8403_A00.EXE" -Parameters '/s /i' -WindowStyle 'Hidden'
+		$exitCode = Execute-Process -Path "$dirFiles\Realtek-High-Definition-Audio-Driver_88PPP_WIN_6.0.1.8403_A00.EXE" -Parameters '/s' -WindowStyle 'Hidden'
+		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
 		##* POST-INSTALLATION
@@ -147,6 +148,8 @@ Try {
 		[string]$installPhase = 'Post-Installation'
 
 		## <Perform Post-Installation tasks here>
+
+		Show-InstallationRestartPrompt -NoCountdown
 
 		## Display a message at the end of the install
 		If (-not $useDefaultMsi) {
